@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
+    <link rel="stylesheet" href="weather.css">
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Weather Dashboard</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="cityInput" placeholder="Search City..."
+                        aria-label="Search City" aria-describedby="button-search">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="button-search">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <ul class="list-group">
+                    <li class="list-group-item" id="citySearch1"></li>
+                    <li class="list-group-item" id="citySearch2"></li>
+                    <li class="list-group-item" id="citySearch3"></li>
+                    <li class="list-group-item" id="citySearch4"></li>
+                    <li class="list-group-item" id="citySearch5"></li>
+                    <li class="list-group-item" id="citySearch6"></li>
+                    <li class="list-group-item" id="citySearch7"></li>
+                    <li class="list-group-item" id="citySearch8"></li>
+                </ul>
+            </div>
+            <div class="col-8">
+                <span class="box">
+                    <h2 id="city"></h2>
+                    <p id="temp"></p>
+                    <p id="humidity"></p>
+                    <p id="wind"></p>
+                    <div class="card2">
+                    <p id="uv"></p></div>
+                </span>
+                <div class="row">
+                    <h4>5-day Forecast</h4>
+                </div>
+                <div class="col-12 d-flex">
+                    <div class="card" id="card1">
+                        <h4 id="frcstDate1"></h4>
+                        <p id="frcstIcon1"></p>
+                        <p id="frcstTemp1"></p>
+                        <p id="frcstHum1"></p>
+                    </div>
+                    <div class="card" id="card2">
+                        <h4 id="frcstDate2"></h4>
+                        <p id="frcstIcon2"></p>
+                        <p id="frcstTemp2"></p>
+                        <p id="frcstHum2"></p>
+                    </div>
+                    <div class="card" id="card3">
+                        <h4 id="frcstDate3"></h4>
+                        <p id="frcstIcon3"></p>
+                        <p id="frcstTemp3"></p>
+                        <p id="frcstHum3"></p>
+                    </div>
+                    <div class="card" id="card4">
+                        <h4 id="frcstDate4"></h4>
+                        <p id="frcstIcon4"></p>
+                        <p id="frcstTemp4"></p>
+                        <p id="frcstHum4"></p>
+                    </div>
+                    <div class="card" id="card5">
+                        <h4 id="frcstDate5"></h4>
+                        <p id="frcstIcon5"></p>
+                        <p id="frcstTemp5"></p>
+                        <p id="frcstHum5"></p>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="weather.js"></script>
+
+</body>
+
+</html>

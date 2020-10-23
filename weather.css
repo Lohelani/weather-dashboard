@@ -1,0 +1,31 @@
+.hide {
+    display: none;
+}
+
+.border {
+    border-width: 1px;
+}
+
+.card {
+    background-color: blue;
+    width: 300px;
+    height: 150px;
+    border: 1px solid blue;
+    margin: 5px;
+  }
+
+  .boxed {
+    border: 1px solid green ;
+  }
+
+  h4 {
+    padding-left: 14px;
+  }
+
+  body {
+    margin-bottom: 50px;
+  }
+
+  .new{
+    background-color: green
+  }
