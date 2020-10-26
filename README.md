@@ -24,6 +24,5 @@ This application is to be used as a weather dashboard. Application uses APIs fro
 
 # Link to Deployed Application:
 
-https://lohelani.github.io/daily-planner/
-
+https://lohelani.github.io/weather-dashboard/
 
