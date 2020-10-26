@@ -8,23 +8,14 @@ $(document).ready(function () {
     var APIKey = "40789148e7c8876c91eb900fc3a6f9f6";
     //on reload push city names into array go to last item in array 
     $("#button-search").on('click', function () {
-
-        var cities = JSON.parse(localStorage.getItem("cities")) || [];
-
-        localStorage.setItem("cities", JSON.stringify(cities));
         var cityInput = $("#cityInput").val();
-        function saveCity() {
-            $("#cityList").empty();
-            for (var i = 0; i < cities.length; i++) {
-                var button = $("<button>").text(cities[i]);
-                button.addClass("btn btn-outline-secondary");
-                button.attr("id", "historyItem");
-                $("#cityList").prepend(button);
-                console.log(button);
-            }
+        $("#cityInput").val("");
+
+        function saveCity(cityInput) {
+            var cityItem = $("<button>").addClass("btn btn-outline-secondary").attr("id", "historyItem").text(cityInput);
+            $("#cityList").prepend(cityItem);
 
         };
-        saveCity();
 
 
         $.ajax({
@@ -34,8 +25,12 @@ $(document).ready(function () {
 
 
             .then(function (response) {
-                cities.push(cityInput);
-                localStorage.setItem("cities", JSON.stringify(cities));
+                if (cities.indexOf(cityInput) === -1) {
+                    cities.push(cityInput);
+                    localStorage.setItem("cities", JSON.stringify(cities));
+                    saveCity(cityInput);
+                }
+
 
 
                 var icon = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png")
