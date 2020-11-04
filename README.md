@@ -28,5 +28,6 @@ https://lohelani.github.io/weather-dashboard/
 
 # Screenshot
 
+![image](https://user-images.githubusercontent.com/70550481/98176245-264efa00-1ec6-11eb-8d2e-db017c6e160e.png)
 
 

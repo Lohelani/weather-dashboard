@@ -1,23 +1,14 @@
 $(document).ready(function () {
 
-
-
+    var APIKey = "40789148e7c8876c91eb900fc3a6f9f6";
     var cities = JSON.parse(localStorage.getItem("cities")) || [];
     console.log(cities);
 
-
-
-
-    if (cities.length) {
-        for (var i = 0; i < cities.length; i++) {
-            saveCity(cities[i])
-
-        }
-        var lastItemCall = (cities[cities.length - 1]);
-        console.log(lastItemCall);
-        //sessionStorage.setItem("lastItemCall");
-        $(window).on("reload", currentWeather(lastItemCall));
-        // run current weather function with last element in the array
+    for (var i = 0; i < cities.length; i++) {
+        saveCity(cities[i])
+    }
+    if (cities.length > 0) {
+        currentWeather(cities[cities.length - 1]);
     }
 
 
@@ -25,26 +16,17 @@ $(document).ready(function () {
         currentWeather($(this).text());
     })
 
-
-
     // Tutor helped with making a list i tried button
     function saveCity(text) {
         var li = $("<li>").addClass("list-group-item text-center list-group-item-action").text(text);
         $("#cityList").prepend(li)
     }
 
-    // make a onclick that targets cities
-
-    var APIKey = "40789148e7c8876c91eb900fc3a6f9f6";
-    //on reload push city names into array go to last item in array 
     $("#button-search").on('click', function () {
         var cityInput = $("#cityInput").val();
         $("#cityInput").val("");
         currentWeather(cityInput);
-        forecast(cityInput)
-        //getUVIndex(cityInput);
     });
-
 
     function currentWeather(cityInput) {
         $.ajax({
@@ -110,14 +92,14 @@ $(document).ready(function () {
 
                 console.log(response.list)
                 //tutor helped here with .html so five day did not repeat itself
-                $("#fiveDay").html("<h4 id=\"fivehead\" class=\"col-8 d-flex\">Five Day Forecast</h4>").append("<div class=\"row\">");
+                $("#fiveDay").html("<h4>Five Day Forecast</h4>").append("<div class=\"row d-flex\">");
                 for (var i = 0; i < response.list.length; i++) {
 
                     if (response.list[i].dt_txt.indexOf("15:00:00") !== -1) {
 
-                        var col = $("<div>").addClass("col-md-4");
-                        var card = $("<div>").addClass("card bg-primary text-white text-align=center");
-                        var body = $("<div>").addClass("card-body p-0");
+                        var col = $("<div>").addClass("col-md-2 p-1");
+                        var card = $("<div>").addClass("card bg-primary text-white");
+                        var body = $("<div>").addClass("card-body p-2");
                         var title = $("<h5>").addClass("card-title").text(new Date(response.list[i].dt_txt).toLocaleDateString());
                         console.log(title);
                         var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png");
@@ -126,25 +108,14 @@ $(document).ready(function () {
                         console.log(h);
                         // append together
                         col.append(card.append(body.append(title, img, t, h)));
-                        // col.append(card.append(body.append(img)));
-                        // col.append(card.append(body.append(t)));
-                        // col.append(card.append(body.append(h)));
-                        //$("#fiveDay").empty();
-                        $("#fiveDay").append(col);
+                        $("#fiveDay .row").append(col);
 
 
                     }
 
                 }
 
-
             });
     }
 
-
 });
-
-
-// if (cities.length > 0) {
-
-// }
