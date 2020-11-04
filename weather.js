@@ -107,14 +107,17 @@ $(document).ready(function () {
             method: "GET",
         })
             .then(function (response) {
+
                 console.log(response.list)
+                //tutor helped here with .html so five day did not repeat itself
+                $("#fiveDay").html("<h4 id=\"fivehead\" class=\"col-8 d-flex\">Five Day Forecast</h4>").append("<div class=\"row\">");
                 for (var i = 0; i < response.list.length; i++) {
-                    if (response.list[i].dt_txt.indexOf("15:00:00") !==-1) {
+
+                    if (response.list[i].dt_txt.indexOf("15:00:00") !== -1) {
 
                         var col = $("<div>").addClass("col-md-4");
                         var card = $("<div>").addClass("card bg-primary text-white text-align=center");
                         var body = $("<div>").addClass("card-body p-0");
-
                         var title = $("<h5>").addClass("card-title").text(new Date(response.list[i].dt_txt).toLocaleDateString());
                         console.log(title);
                         var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png");
@@ -126,9 +129,9 @@ $(document).ready(function () {
                         // col.append(card.append(body.append(img)));
                         // col.append(card.append(body.append(t)));
                         // col.append(card.append(body.append(h)));
-
+                        //$("#fiveDay").empty();
                         $("#fiveDay").append(col);
-                        //$("fiveDay").empty();
+
 
                     }
 
