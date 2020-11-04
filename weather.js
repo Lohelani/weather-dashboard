@@ -5,13 +5,19 @@ $(document).ready(function () {
     var cities = JSON.parse(localStorage.getItem("cities")) || [];
     console.log(cities);
 
+
+
+
     if (cities.length) {
         for (var i = 0; i < cities.length; i++) {
             saveCity(cities[i])
+
         }
-
+        var lastItemCall = (cities[cities.length - 1]);
+        console.log(lastItemCall);
+        //sessionStorage.setItem("lastItemCall");
+        $(window).on("reload", currentWeather(lastItemCall));
         // run current weather function with last element in the array
-
     }
 
 
@@ -20,10 +26,11 @@ $(document).ready(function () {
     })
 
 
+
     // Tutor helped with making a list i tried button
     function saveCity(text) {
         var li = $("<li>").addClass("list-group-item text-center list-group-item-action").text(text);
-        $("#cityList").append(li)
+        $("#cityList").prepend(li)
     }
 
     // make a onclick that targets cities
@@ -58,6 +65,7 @@ $(document).ready(function () {
                 $("#wind").text("Wind Speed: " + response.wind.speed + " MPH");
                 getUVIndex(response.coord.lat, response.coord.lon);
                 forecast(cityInput);
+
             });
     };
 
@@ -99,27 +107,28 @@ $(document).ready(function () {
             method: "GET",
         })
             .then(function (response) {
-                console.log(response)
+                console.log(response.list)
                 for (var i = 0; i < response.list.length; i++) {
-                    if (response.list[i].dt_txt.indexOf("15:00:00") !== -1) {
+                    if (response.list[i].dt_txt.indexOf("15:00:00") !==-1) {
 
-                        var col = $("<div>").addClass("col-md-2");
-                        var card = $("<div>").addClass("card bg-primary text-white");
-                        var body = $("<div>").addClass("card-body p-2");
+                        var col = $("<div>").addClass("col-md-4");
+                        var card = $("<div>").addClass("card bg-primary text-white text-align=center");
+                        var body = $("<div>").addClass("card-body p-0");
 
                         var title = $("<h5>").addClass("card-title").text(new Date(response.list[i].dt_txt).toLocaleDateString());
                         console.log(title);
-                        var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
+                        var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png");
                         var t = $("<p>").addClass("card-text").text("Temp: " + response.list[i].main.temp_max);
                         var h = $("<p>").addClass("card-text").text("Humidity: " + response.list[i].main.humidity);
                         console.log(h);
                         // append together
-                        col.append(card.append(body.append(title)));
-                        col.append(card.append(body.append(img)));
-                        col.append(card.append(body.append(t)));
-                        col.append(card.append(body.append(h)));
+                        col.append(card.append(body.append(title, img, t, h)));
+                        // col.append(card.append(body.append(img)));
+                        // col.append(card.append(body.append(t)));
+                        // col.append(card.append(body.append(h)));
 
                         $("#fiveDay").append(col);
+                        //$("fiveDay").empty();
 
                     }
 

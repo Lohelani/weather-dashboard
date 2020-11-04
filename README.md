@@ -26,3 +26,7 @@ This application is to be used as a weather dashboard. Application uses APIs fro
 
 https://lohelani.github.io/weather-dashboard/
 
+# Screenshot
+
+
+
