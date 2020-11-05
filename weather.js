@@ -99,7 +99,7 @@ $(document).ready(function () {
 
                         var col = $("<div>").addClass("col-md-2 p-1");
                         var card = $("<div>").addClass("card bg-primary text-white");
-                        var body = $("<div>").addClass("card-body p-2");
+                        var body = $("<div>").addClass("card-body p-1");
                         var title = $("<h5>").addClass("card-title").text(new Date(response.list[i].dt_txt).toLocaleDateString());
                         console.log(title);
                         var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png");
